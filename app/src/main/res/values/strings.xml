@@ -28,4 +28,6 @@
     <string name="privacy_url">http://jeroenmols.com/apps/landscapevideocamera/privacy_policy.html</string>
     <string name="enter_fps_hint">Enter FPS</string>
 
+    <string name="accessibility_description">抢红包助手</string>
+
 </resources>
