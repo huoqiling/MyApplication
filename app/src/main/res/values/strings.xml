@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">androidStudy</string>
+
+    <string name="no_internet">无网络连接</string>
+    <string name="generic_server_down">连接服务器失败</string>
+    <string name="generic_error">网络异常,请稍后再试</string>
+    <string name="json_parse_error">数据解析错误</string>
+
+    <string name="capture_video">Capture video</string>
+
+    <string name="status_nocapture">nothing captured yet</string>
+    <string name="status_capturesuccess">Capture successful: %s</string>
+    <string name="status_capturecancelled">Capture cancelled by user</string>
+    <string name="status_capturefailed">Capture failed</string>
+
+    <string name="filename_hint">e.g. myVideo.mp4</string>
+    <string name="duration_hint">maximum duration</string>
+    <string name="duration_unit">sec</string>
+    <string name="filesize_hint">maximum filesize</string>
+    <string name="filesize_unit">Mb</string>
+
+    <string name="advanced">advanced</string>
+    <string name="github">show on GitHub</string>
+    <string name="github_url">https://github.com/jeroenmols/LandscapeVideoCamera</string>
+    <string name="show_timer">Show Timer</string>
+    <string name="allow_frontcamera">Allow front facing camera</string>
+    <string name="privacy">privacy policy</string>
+    <string name="privacy_url">http://jeroenmols.com/apps/landscapevideocamera/privacy_policy.html</string>
+    <string name="enter_fps_hint">Enter FPS</string>
+
+</resources>
