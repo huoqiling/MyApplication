@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * Created by zyfx_ on 2017/5/6.
  */
-public class MyDaoViewModel extends BaseObservable {
+public class StudyDaoViewModel extends BaseObservable {
 
     List<User> userList;
 
-    public MyDaoViewModel(List<User> userList) {
+    public StudyDaoViewModel(List<User> userList) {
         this.userList = userList;
     }
 
@@ -36,7 +36,7 @@ public class MyDaoViewModel extends BaseObservable {
         return buffer.toString();
     }
 
-    @BindingAdapter("show")
+    @BindingAdapter("study")
     public static void showData(TextView tvUser, String userList) {
         tvUser.setText(userList);
     }

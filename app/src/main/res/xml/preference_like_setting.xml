@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="我的应用设置">
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="选择您喜欢的金庸小说"
+            android:entries="@array/jinYongZuoPin"
+            android:entryValues="@array/jinYongValue"
+            android:key="JIN_YONG"
+            android:summary="@string/jinYong0"
+            android:title="金庸作品" />
+
+        <EditTextPreference
+            android:dialogTitle="填写您喜欢的水果"
+            android:hint="请输入您喜欢吃的水果"
+            android:key="FRUITS"
+            android:summary="喜欢的水果是：苹果"
+            android:title="喜欢的水果" />
+
+        <CheckBoxPreference
+            android:key="SING"
+            android:summary="是否喜欢唱歌"
+            android:title="爱好唱歌?"
+            android:checked="false"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

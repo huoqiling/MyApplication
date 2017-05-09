@@ -11,6 +11,7 @@ import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.store.PersistentCookieStore;
 import com.lzy.okgo.model.HttpHeaders;
+import com.preference.ACache;
 
 import java.util.logging.Level;
 
@@ -24,6 +25,7 @@ public class CustomApplication extends Application {
 
     private static CustomApplication sInstance;
     private DaoSession daoSession;
+    public ACache mACache;
 
     public static synchronized CustomApplication getInstance() {
         return sInstance;
@@ -34,6 +36,8 @@ public class CustomApplication extends Application {
         super.onCreate();
 
         sInstance = this;
+
+        mACache = ACache.get(getApplicationContext());
 
         //---------这里给出的是示例代码,告诉你可以这么传,实际使用的时候,根据需要传,不需要就不传-------------//
         HttpHeaders headers = new HttpHeaders();

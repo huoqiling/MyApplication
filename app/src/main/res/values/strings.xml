@@ -30,4 +30,10 @@
 
     <string name="accessibility_description">抢红包助手</string>
 
+    <string name="jinYong0">天龙八部</string>
+    <string name="jinYong1">射雕英雄传</string>
+    <string name="jinYong2">神雕侠侣</string>
+    <string name="jinYong3">侠客行</string>
+    <string name="jinYong4">连城诀</string>
+    <string name="jinYong5">鹿鼎记</string>
 </resources>

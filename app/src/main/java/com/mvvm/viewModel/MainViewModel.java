@@ -36,4 +36,6 @@ public class MainViewModel extends BaseObservable{
         return person.getAddress();
     }
 
+
+
 }
