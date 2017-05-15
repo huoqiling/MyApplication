@@ -35,7 +35,7 @@ public class MvvMActivity extends AppCompatActivity {
     @Bind(R.id.refreshLayout)
     CustomRefresh refreshLayout;
 
-    private MainAdapter mainAdapter;
+//    private MainAdapter mainAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,9 +53,9 @@ public class MvvMActivity extends AppCompatActivity {
         personList.add(new Person("虚竹", "27", "男", "逍遥派"));
         personList.add(new Person("段誉", "25", "男", "大理王子"));
         personList.add(new Person("王语嫣", "20", "女", "大理王子之妻"));
-        mainAdapter = new MainAdapter(this, personList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(mainAdapter);
+//        mainAdapter = new MainAdapter(this, personList);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(mainAdapter);
 
         refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
 

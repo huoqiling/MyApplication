@@ -10,4 +10,18 @@
         <item name="windowActionBar">false</item>
     </style>
 
+
+    <style name="txt_lab" parent="TextAppearance.AppCompat">
+        <!-- 默认状态提示颜色和字体-->
+        <item name="android:textColorHint">#8c8c8c</item>
+        <item name="android:textSize">14sp</item>
+        <!-- 下面可以根据需要设置，如果没有将默认使用默认theme的颜色 -->
+        <!-- Label标签的颜色 -->
+        <item name="android:textColor">#c6174e</item>
+        <!-- 默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">#3F51b5</item>
+        <!-- 选择的底线颜色 -->
+        <item name="colorControlActivated">#c6174e</item>
+    </style>
+
 </resources>

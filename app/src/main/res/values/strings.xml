@@ -36,4 +36,7 @@
     <string name="jinYong3">侠客行</string>
     <string name="jinYong4">连城诀</string>
     <string name="jinYong5">鹿鼎记</string>
+
+
+    <string name="inputNameHint">请输入账号</string>
 </resources>

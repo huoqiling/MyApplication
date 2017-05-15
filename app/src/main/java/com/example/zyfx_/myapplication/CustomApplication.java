@@ -13,6 +13,8 @@ import com.lzy.okgo.cookie.store.PersistentCookieStore;
 import com.lzy.okgo.model.HttpHeaders;
 import com.preference.ACache;
 
+import org.androidannotations.annotations.EApplication;
+
 import java.util.logging.Level;
 
 /**
@@ -20,6 +22,7 @@ import java.util.logging.Level;
  * @date 2017/3/20 17:09
  * @description
  **/
+@EApplication
 public class CustomApplication extends Application {
 
 

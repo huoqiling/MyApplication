@@ -1,25 +1,12 @@
 package com.mvvm.view;
 
-import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
-import com.example.zyfx_.myapplication.R;
-import com.example.zyfx_.myapplication.databinding.ItemMainBinding;
-import com.mvvm.model.entitys.Person;
-import com.mvvm.viewModel.MainViewModel;
-
-import java.util.List;
-
 /**
  * Created by zyfx_ on 2017/5/6.
  * Error:Execution failed for task ':app:dataBindingProcessLayoutsDebug'.
  >
  *
  */
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder> {
+/*public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder> {
 
     private Context context;
     private List<Person> personList;
@@ -57,4 +44,4 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder>
             this.mainBinding = mainBinding;
         }
     }
-}
+}*/

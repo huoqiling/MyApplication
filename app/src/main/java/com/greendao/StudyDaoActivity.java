@@ -1,26 +1,14 @@
 package com.greendao;
 
-import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.View;
-
-import com.example.zyfx_.myapplication.R;
-import com.example.zyfx_.myapplication.databinding.ActivityMyDaoBinding;
-import com.example.zyfx_.myapplication.databinding.ActivityStudyDaoBinding;
-import com.greendao.entity.User;
-import com.greendao.util.greenDaoUtil;
-
-import java.util.List;
 
 /**
  * Created by zyfx_ on 2017/5/6.
  */
 public class StudyDaoActivity extends FragmentActivity implements View.OnClickListener {
 
-    ActivityStudyDaoBinding studyDaoBinding;
+   /* ActivityStudyDaoBinding studyDaoBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,11 +25,12 @@ public class StudyDaoActivity extends FragmentActivity implements View.OnClickLi
         List<User> userList = greenDaoUtil.queryUserList();
         StudyDaoViewModel viewModel = new StudyDaoViewModel(userList);
         studyDaoBinding.setStudy(viewModel);
-    }
+    }*/
+
 
     @Override
     public void onClick(View view) {
-        String name = studyDaoBinding.etName.getText().toString();
+       /* String name = studyDaoBinding.etName.getText().toString();
         String age = studyDaoBinding.etAge.getText().toString();
         String skill = studyDaoBinding.etSkill.getText().toString();
         Long userId = Long.parseLong(studyDaoBinding.etId.getText().toString());
@@ -76,6 +65,6 @@ public class StudyDaoActivity extends FragmentActivity implements View.OnClickLi
             case R.id.btnQuery:
                 setData();
                 break;
-        }
+        }*/
     }
 }
