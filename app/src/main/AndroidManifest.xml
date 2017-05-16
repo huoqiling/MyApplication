@@ -30,7 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.androidannotations.SignInActivity_"
+            android:name="com.androidannotations.AnnotationsMainActivity_"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
@@ -39,6 +39,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.androidannotations.SignInActivity_"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name="com.mvvm.view.MvvMActivity"
             android:screenOrientation="portrait" />
