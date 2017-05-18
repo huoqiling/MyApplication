@@ -1,76 +1,44 @@
 package com.androidannotations;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-
-import com.androidannotations.view.BottomTabView;
+import com.androidannotations.base.BaseAnnotationsActivity;
+import com.androidannotations.base.BaseAnnotationsFragment;
+import com.androidannotations.fragment.MainFragment_;
 import com.example.zyfx_.myapplication.R;
-import com.example.zyfx_.myapplication.fragment.FoodFragment;
-import com.example.zyfx_.myapplication.fragment.FriendFragment;
-import com.example.zyfx_.myapplication.fragment.HomeFragment;
-import com.example.zyfx_.myapplication.fragment.MineFragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.ViewById;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zyfx_ on 2017/5/16.
  */
-@EActivity(R.layout.activity_base_bottom_tab)
-public class AnnotationsMainActivity extends AppCompatActivity {
+@EActivity(R.layout.activity_annotations_main)
+public class AnnotationsMainActivity extends BaseAnnotationsActivity {
 
+    @Bean
+    ToastUtil toastUtil;
 
-    @ViewById
-    ViewPager viewPager;
-
-    @ViewById
-    BottomTabView bottomTabView;
-
-    private FragmentPagerAdapter adapter;
+    private BaseAnnotationsFragment mainFragment;
 
     @AfterViews
     void init() {
-        adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return getFragments().get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return getFragments().size();
-            }
-        };
-        viewPager.setAdapter(adapter);
-
-        bottomTabView.setTabItemViews(getTabViews());
+        showMainFragment();
     }
 
-    protected List<BottomTabView.TabItemView> getTabViews() {
-        List<BottomTabView.TabItemView> tabItemViewList = new ArrayList<>();
-        tabItemViewList.add(new BottomTabView.TabItemView(this, "首页", R.color.colorPrimary, R.color.colorAccent,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
-        tabItemViewList.add(new BottomTabView.TabItemView(this, "美食", R.color.colorPrimary, R.color.colorAccent,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
-        tabItemViewList.add(new BottomTabView.TabItemView(this, "朋友", R.color.colorPrimary, R.color.colorAccent,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
-        tabItemViewList.add(new BottomTabView.TabItemView(this, "我的", R.color.colorPrimary, R.color.colorAccent,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher_round));
-        return tabItemViewList;
+    private void showMainFragment() {
+        if (mainFragment == null) {
+            mainFragment = new MainFragment_();
+            setRootFragment(mainFragment);
+        } else {
+            toastUtil.showTextToast("mainFragment already exist");
+        }
     }
 
-    protected List<Fragment> getFragments() {
-        List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new HomeFragment());
-        fragmentList.add(new FoodFragment());
-        fragmentList.add(new FriendFragment());
-        fragmentList.add(new MineFragment());
-        return fragmentList;
+    public void removeMainFragment() {
+        if (mainFragment != null) {
+            removeFragment(mainFragment);
+            mainFragment = null;
+        }
     }
+
 }

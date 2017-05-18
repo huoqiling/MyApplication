@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by zyfx_ on 2017/5/16.
  */
-@EActivity(R.layout.activity_base_bottom_tab)
+@EActivity(R.layout.activity_annotations_main)
 public abstract class BottomTabBaseActivity extends AppCompatActivity {
 
     @ViewById

@@ -8,12 +8,14 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5sp"
-        android:background="@color/common_gray" />
+        android:background="@color/colorAccent" />
 
     <com.androidannotations.view.BottomTabView
         android:id="@+id/bottomTabView"
