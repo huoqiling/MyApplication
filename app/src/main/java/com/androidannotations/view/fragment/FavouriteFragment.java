@@ -1,4 +1,4 @@
-package com.androidannotations.fragment;
+package com.androidannotations.view.fragment;
 
 import com.androidannotations.base.BaseAnnotationsFragment;
 import com.example.zyfx_.myapplication.R;

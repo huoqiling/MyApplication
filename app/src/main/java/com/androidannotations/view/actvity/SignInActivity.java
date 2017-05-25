@@ -1,15 +1,19 @@
-package com.androidannotations;
+package com.androidannotations.view.actvity;
 
 import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.androidannotations.base.BaseAnnotationsActivity;
 import com.androidannotations.base.BaseRestManager;
 import com.androidannotations.net.RestManager;
+import com.androidannotations.utils.Constant;
+import com.androidannotations.utils.MyCache;
+import com.androidannotations.utils.ToastUtil;
 import com.example.zyfx_.myapplication.R;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
 import com.example.zyfx_.myapplication.bean.UserInfo;
@@ -19,6 +23,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 /**
@@ -27,7 +32,7 @@ import org.androidannotations.annotations.ViewById;
  * @description 登录
  **/
 @EActivity(R.layout.activity_sign_in)
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends BaseAnnotationsActivity {
 
     @ViewById
     LinearLayout loginRoot;
@@ -49,6 +54,9 @@ public class SignInActivity extends AppCompatActivity {
 
     @Bean
     ToastUtil toastUtil;
+
+    @Bean
+    MyCache myCache;
 
     @AfterViews
     void init() {
@@ -78,8 +86,9 @@ public class SignInActivity extends AppCompatActivity {
         getUserInfo();
     }
 
+    @UiThread
     void getUserInfo() {
-        String userName = etName.getText().toString().trim();
+        final String userName = etName.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(userName)) {
@@ -98,8 +107,12 @@ public class SignInActivity extends AppCompatActivity {
                 public void onRequestSuccess(BaseEntity baseInfo) {
                     UserInfo userResult = (UserInfo) baseInfo;
                     if (userResult.isSuccess()) {
+                        myCache.saveToken(userResult.data.appLoginToken);
+                        myCache.setLoginState(true);
+                        myCache.saveUserName(userName);
                         toastUtil.showTextToast("登录成功");
-//                        restManager.setSesstionId(userResult.getData().data.appLoginToken);
+                        start(AnnotationsMainActivity_.class);
+                        finish();
                     } else {
                         toastUtil.showTextToast(userResult.getMsg());
                     }
@@ -113,6 +126,11 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public boolean isShowProgressDialog() {
                     return true;
+                }
+
+                @Override
+                public boolean isCancelable() {
+                    return false;
                 }
             };
             restManager.login(restListener, userName, password);

@@ -2,8 +2,13 @@ package com.androidannotations.net;
 
 import android.util.Log;
 
+import com.example.zyfx_.myapplication.CustomApplication;
+import com.lzy.okgo.model.HttpParams;
+
+import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.EBean.Scope;
+import org.androidannotations.annotations.rest.Head;
 import org.springframework.http.ContentCodingType;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
@@ -18,6 +23,7 @@ import java.util.List;
 
 @EBean(scope = Scope.Singleton)
 public class HttpInterceptor implements ClientHttpRequestInterceptor {
+
 
     public static final String TAG = "zhangx-HttpInterceptor";
 
@@ -41,11 +47,12 @@ public class HttpInterceptor implements ClientHttpRequestInterceptor {
         String url = request.getURI().toString();
         Log.v(TAG, "url:");
         Log.v(TAG, url);
-        Log.v(TAG, url);
         Log.v(TAG, "body");
         Log.v(TAG, stringFromBytes(body));
         HttpHeaders headers = request.getHeaders();
         String cookie = headers.getFirst(HttpHeaders.COOKIE);
+//        CustomApplication.getInstance().mACache.put("COOKIE", cookie);
+        Log.i("zhangx-COOKIE", cookie + "");
         log(cookie);
         String sessionid = headers.getFirst("sessionid");
         log(sessionid);

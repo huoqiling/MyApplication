@@ -1,4 +1,4 @@
-package com.androidannotations;
+package com.androidannotations.view.view;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

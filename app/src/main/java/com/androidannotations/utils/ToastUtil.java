@@ -1,4 +1,4 @@
-package com.androidannotations;
+package com.androidannotations.utils;
 
 import android.widget.Toast;
 

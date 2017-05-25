@@ -4,10 +4,14 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.support.annotation.UiThread;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.androidannotations.net.HttpInterceptor;
+import com.androidannotations.net.MyClientHttpRequestInterceptor;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
+import com.example.zyfx_.myapplication.net.AppException;
+import com.example.zyfx_.myapplication.net.GsonTools;
 import com.google.gson.Gson;
 
 import org.androidannotations.annotations.Bean;
@@ -27,6 +31,16 @@ abstract public class BaseRestManager extends BaseEngine {
     @Bean
     protected HttpInterceptor testInterceptor;
 
+    @Bean
+    protected MyClientHttpRequestInterceptor interceptor;
+
+    @UiThread
+    protected void prepareRequest(OnRestListener onRestListener) {
+        if (onRestListener.isShowProgressDialog()) {
+            showProgress(onRestListener.isCancelable());
+        }
+    }
+
     public interface OnRestListener {
 
         void onRequestSuccess(BaseEntity baseInfo);
@@ -34,13 +48,8 @@ abstract public class BaseRestManager extends BaseEngine {
         void onRequestFail();
 
         boolean isShowProgressDialog();
-    }
 
-    @UiThread
-    protected void prepareRequest(OnRestListener onRestListener) {
-        if (onRestListener.isShowProgressDialog()) {
-            showProgress(onRestListener.isShowProgressDialog());
-        }
+        boolean isCancelable();
     }
 
 
@@ -60,7 +69,7 @@ abstract public class BaseRestManager extends BaseEngine {
     protected void handleRequestException(Exception e, OnRestListener onRestListener) {
         dismissProgress();
         e.printStackTrace();
-        if (e.getClass().equals(HttpClientErrorException.class)) {
+        if (e.getClass().isInstance(HttpClientErrorException.class)) {
             toastUtil.showTextToast("无法连接");
         } else {
             if (checkNetworkState()) {
@@ -74,9 +83,13 @@ abstract public class BaseRestManager extends BaseEngine {
     @UiThread
     public void dumpObject(Object object) {
 
-        String jsonString = new Gson().toJson(object);
-        Log.v("zhangx-RestManager", "dumpObject:");
-        Log.v("zhangx-RestManager", jsonString);
+        try {
+            String jsonString = GsonTools.creatJsonString(object);
+            Log.v("zhangx-RestManager", "dumpObject:");
+            Log.v("zhangx-RestManager", jsonString);
+        } catch (AppException e) {
+            e.printStackTrace();
+        }
     }
 
     @UiThread
@@ -124,4 +137,5 @@ abstract public class BaseRestManager extends BaseEngine {
         }
         return true;
     }
+
 }

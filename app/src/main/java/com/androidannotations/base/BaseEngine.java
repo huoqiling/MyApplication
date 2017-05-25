@@ -1,11 +1,12 @@
 package com.androidannotations.base;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.androidannotations.CustomLoading;
-import com.androidannotations.ToastUtil;
+import com.androidannotations.view.view.CustomLoading;
+import com.androidannotations.utils.ToastUtil;
 import com.example.zyfx_.myapplication.CustomApplication;
 
 import org.androidannotations.annotations.App;
@@ -26,7 +27,7 @@ public class BaseEngine {
     protected ToastUtil toastUtil;
 
     private CustomLoading customLoading;
-    private FragmentActivity activity;
+    private AppCompatActivity activity;
 
 
     public void setActivity(AppCompatActivity activity) {
@@ -61,5 +62,10 @@ public class BaseEngine {
         if (msg != null) {
             Log.v("zhangx", msg);
         }
+    }
+
+    protected String getDeviceId() {
+        TelephonyManager tm = (TelephonyManager) application.getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.getDeviceId();
     }
 }

@@ -1,4 +1,4 @@
-package com.androidannotations.view;
+package com.androidannotations.view.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -1,12 +1,12 @@
-package com.androidannotations;
+package com.androidannotations.view.actvity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.androidannotations.view.BottomTabView;
+import com.androidannotations.base.BaseAnnotationsActivity;
+import com.androidannotations.view.view.BottomTabView;
 import com.example.zyfx_.myapplication.R;
 
 import org.androidannotations.annotations.AfterViews;
@@ -19,7 +19,7 @@ import java.util.List;
  * Created by zyfx_ on 2017/5/16.
  */
 @EActivity(R.layout.activity_annotations_main)
-public abstract class BottomTabBaseActivity extends AppCompatActivity {
+public abstract class BottomTabBaseActivity extends BaseAnnotationsActivity {
 
     @ViewById
     ViewPager viewPager;

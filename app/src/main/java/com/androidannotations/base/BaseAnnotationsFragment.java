@@ -1,13 +1,15 @@
 package com.androidannotations.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-import com.androidannotations.AnnotationsMainActivity;
+import com.androidannotations.view.actvity.AnnotationsMainActivity;
+import com.example.zyfx_.myapplication.CustomApplication;
 
 public class BaseAnnotationsFragment extends Fragment {
 
@@ -16,7 +18,6 @@ public class BaseAnnotationsFragment extends Fragment {
     protected boolean isRootFragment;
     protected BaseAnnotationsFragment parentFragment;
     protected AnnotationsMainActivity mActivity;
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -39,6 +40,7 @@ public class BaseAnnotationsFragment extends Fragment {
                 return true;
             }
         });
+
     }
 
     public void onFragmentResume() {
@@ -68,5 +70,10 @@ public class BaseAnnotationsFragment extends Fragment {
             }
         }
 
+    }
+
+    public void start(Class<? extends Activity> activityClass) {
+        Intent intent = new Intent(CustomApplication.getInstance(), activityClass);
+        startActivity(intent);
     }
 }

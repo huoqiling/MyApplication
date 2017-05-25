@@ -1,6 +1,7 @@
 package com.androidannotations.net;
 
 import com.androidannotations.base.BaseRestManager;
+import com.androidannotations.entitys.InquiryRecordInfo;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
 import com.example.zyfx_.myapplication.bean.UserInfo;
 
@@ -30,16 +31,26 @@ public class RestManager extends BaseRestManager {
     @RestService
     RestClient restClient;
 
+    @RestService
+    RestBossClient bossClient;
+
+
     @AfterInject
     protected void initAuth() {
 
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
-        interceptors.add(testInterceptor);
+        interceptors.add(interceptor);
         SimpleClientHttpRequestFactory s = new SimpleClientHttpRequestFactory();
         s.setConnectTimeout(CONNECT_TIME_OUT);
         s.setReadTimeout(READ_TIME_OUT);
         {
             RestTemplate template = restClient.getRestTemplate();
+            template.setRequestFactory(s);
+            template.setInterceptors(interceptors);
+        }
+
+        {
+            RestTemplate template = bossClient.getRestTemplate();
             template.setRequestFactory(s);
             template.setInterceptors(interceptors);
         }
@@ -56,20 +67,55 @@ public class RestManager extends BaseRestManager {
 
         try {
             prepareRequest(onRestListener);
-            MultiValueMap<String, Object> formData = new LinkedMultiValueMap<>();
-            formData.add("username", userName);
-            formData.add("password", password);
-            UserInfo userResult = restClient.signInApp(userName, password);
-            notifyResult(onRestListener, userResult);
+            UserInfo userInfo = restClient.signInApp(userName, password, "1.0", getDeviceId(), 1, 1);
+            notifyResult(onRestListener, userInfo);
         } catch (Exception e) {
-            e.printStackTrace();
+            handleRequestException(e, onRestListener);
             notifyRequestFail(onRestListener);
         } finally {
             notifyFinally(onRestListener);
         }
     }
 
-    public void setSesstionId(String sessionId) {
-        restClient.setCookie("JSESSIONID", sessionId);
+    @Background
+    public void tokenLogin(OnRestListener onRestListener, String userName, String token) {
+        try {
+            prepareRequest(onRestListener);
+            UserInfo userInfo = restClient.tokenLogin(userName, token);
+            notifyResult(onRestListener, userInfo);
+        } catch (Exception e) {
+            handleRequestException(e, onRestListener);
+            notifyRequestFail(onRestListener);
+        } finally {
+            notifyFinally(onRestListener);
+        }
+    }
+
+    @Background
+    public void getInquiryList(OnRestListener onRestListener, int pageIndex, int pageSize, int status) {
+        try {
+            prepareRequest(onRestListener);
+            InquiryRecordInfo recordInfo = bossClient.getInquiryInfo(pageIndex, pageSize, status);
+            notifyResult(onRestListener, recordInfo);
+        } catch (Exception e) {
+            handleRequestException(e, onRestListener);
+            notifyRequestFail(onRestListener);
+        } finally {
+            notifyFinally(onRestListener);
+        }
+    }
+
+    @Background
+    public void loginOut(OnRestListener onRestListener) {
+        try {
+            prepareRequest(onRestListener);
+            BaseEntity baseEntity = restClient.loginOut();
+            notifyResult(onRestListener, baseEntity);
+        } catch (Exception e) {
+            handleRequestException(e, onRestListener);
+            notifyRequestFail(onRestListener);
+        } finally {
+            notifyFinally(onRestListener);
+        }
     }
 }

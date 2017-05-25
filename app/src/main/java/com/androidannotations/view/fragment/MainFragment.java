@@ -1,11 +1,11 @@
-package com.androidannotations.fragment;
+package com.androidannotations.view.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.androidannotations.base.BaseAnnotationsFragment;
-import com.androidannotations.view.BottomTabView;
+import com.androidannotations.view.view.BottomTabView;
 import com.example.zyfx_.myapplication.CustomApplication;
 import com.example.zyfx_.myapplication.R;
 

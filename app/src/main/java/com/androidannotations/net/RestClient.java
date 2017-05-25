@@ -1,10 +1,14 @@
 package com.androidannotations.net;
 
+import com.example.zyfx_.myapplication.bean.BaseEntity;
 import com.example.zyfx_.myapplication.bean.UserInfo;
 
 import org.androidannotations.annotations.rest.Accept;
+import org.androidannotations.annotations.rest.Get;
 import org.androidannotations.annotations.rest.Post;
+import org.androidannotations.annotations.rest.RequiresCookie;
 import org.androidannotations.annotations.rest.Rest;
+import org.androidannotations.annotations.rest.SetsCookie;
 import org.androidannotations.api.rest.MediaType;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -12,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by zyfx_ on 2017/5/15.
  */
-@Rest(rootUrl = "http://web.goldcolordevworld2017.com", converters = {GsonHttpMessageConverter.class})
+@Rest(rootUrl = "http://wallet.pigamegroup.com/", converters = {GsonHttpMessageConverter.class})
 public interface RestClient {
 
     RestTemplate getRestTemplate();
@@ -30,8 +34,14 @@ public interface RestClient {
     String getCookie(String name);
 
 
-    @Post("/user/applogin?username={username}&password={password}")
+    @Post("user/applogin?username={username}&password={password}&clientVersion{clientVersion}" +
+            "&androidDeviceToken{androidDeviceToken}&noticePlatform{noticePlatform}&clientType{clientType}")
     @Accept(MediaType.APPLICATION_JSON)
-    UserInfo signInApp(String username, String password);
+    UserInfo signInApp(String username, String password, String clientVersion, String androidDeviceToken, int noticePlatform, int clientType);
 
+    @Post("user/applogin?username={username}&token={token}")
+    UserInfo tokenLogin(String username, String token);
+
+    @Get("user/logout")
+    BaseEntity loginOut();
 }
