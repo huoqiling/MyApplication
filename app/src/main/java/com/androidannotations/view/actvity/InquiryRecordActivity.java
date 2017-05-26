@@ -1,6 +1,7 @@
 package com.androidannotations.view.actvity;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.androidannotations.base.BaseAdapterHelper;
@@ -65,6 +66,7 @@ public class InquiryRecordActivity extends BaseAnnotationsActivity {
             public void onRequestSuccess(BaseEntity baseInfo) {
                 InquiryRecordInfo recordInfo = (InquiryRecordInfo) baseInfo;
                 if (recordInfo.isSuccess()) {
+                    Log.d("zhangx","recordInfo--"+recordInfo.data.get(0).toString());
                     setData(recordInfo.data);
                 } else {
                     toastUtil.showTextToast(recordInfo.getMsg());

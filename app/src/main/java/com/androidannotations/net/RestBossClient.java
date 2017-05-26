@@ -7,12 +7,14 @@ import org.androidannotations.annotations.rest.Post;
 import org.androidannotations.annotations.rest.RequiresHeader;
 import org.androidannotations.annotations.rest.Rest;
 import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by zyfx_ on 2017/5/15.
  */
-@Rest(rootUrl = "http://boss.pigamegroup.com/", converters = {JsonToModelConverter.class, FormHttpMessageConverter.class})
+@Rest(rootUrl = "http://boss.pigamegroup.com/", converters = {GsonHttpMessageConverter.class})
 public interface RestBossClient {
 
     RestTemplate getRestTemplate();

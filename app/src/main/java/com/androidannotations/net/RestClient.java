@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by zyfx_ on 2017/5/15.
  */
-@Rest(rootUrl = "http://wallet.pigamegroup.com/", converters = { JsonToModelConverter.class, FormHttpMessageConverter.class})
+@Rest(rootUrl = "http://wallet.pigamegroup.com/", converters = {GsonHttpMessageConverter.class})
 public interface RestClient {
 
     RestTemplate getRestTemplate();

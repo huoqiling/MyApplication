@@ -48,7 +48,6 @@ abstract public class BaseRestManager extends BaseEngine {
     @UiThread
     protected void notifyResult(OnRestListener onRestListener, BaseEntity baseInfo) {
         dismissProgress();
-        log("session:");
         if (null != baseInfo) {
             onRestListener.onRequestSuccess(baseInfo);
             dumpObject(baseInfo);

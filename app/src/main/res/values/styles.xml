@@ -24,4 +24,66 @@
         <item name="colorControlActivated">#c6174e</item>
     </style>
 
+    <!-- 标题栏 -->
+    <style name="common_layout">
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <!-- 标题栏后退按钮 -->
+    <style name="common_image_left">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:src">@mipmap/iv_yellow_back</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <!-- 标题栏中间 TextView -->
+    <style name="common_title_text">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <!-- 标题栏右边图片 -->
+    <style name="common_image_right">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:padding">12.5dp</item>
+        <item name="android:src">@mipmap/ic_launcher</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+
+    <!-- 标题栏右边按钮 -->
+    <style name="common_btn_right">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
 </resources>

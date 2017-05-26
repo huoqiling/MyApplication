@@ -14,4 +14,15 @@
         <attr name="tr_headerView" format="dimension"/>
         <attr name="tr_bottomView" format="dimension"/>
     </declare-styleable>
+
+    <!--标题栏-->
+    <declare-styleable name="CustomTitleBar">
+        <attr name="titleText" format="string" />
+        <attr name="rightButtonText" format="string" />
+        <attr name="rightButtonTextColor" format="color" />
+        <attr name="showBackButton" format="boolean" />
+        <attr name="showRightImages" format="boolean" />
+        <attr name="rightImageSrc" format="reference|color" />
+        <attr name="maxSize" format="integer" />
+    </declare-styleable>
 </resources>
