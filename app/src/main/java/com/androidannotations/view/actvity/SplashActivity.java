@@ -3,7 +3,7 @@ package com.androidannotations.view.actvity;
 import android.widget.ImageView;
 
 import com.androidannotations.base.BaseAnnotationsActivity;
-import com.androidannotations.utils.MyCache;
+import com.androidannotations.cache.MyCache;
 import com.example.zyfx_.myapplication.R;
 import com.squareup.picasso.Picasso;
 

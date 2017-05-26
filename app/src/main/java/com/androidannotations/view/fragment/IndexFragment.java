@@ -4,10 +4,12 @@ import android.app.Activity;
 
 import com.androidannotations.base.BaseAnnotationsFragment;
 import com.androidannotations.base.BaseRestManager;
+import com.androidannotations.cache.MyCache;
 import com.androidannotations.net.RestManager;
 import com.androidannotations.utils.ToastUtil;
 import com.androidannotations.view.actvity.AnnotationsMainActivity;
 import com.androidannotations.view.actvity.InquiryRecordActivity_;
+import com.androidannotations.view.actvity.SignInActivity_;
 import com.example.zyfx_.myapplication.CustomApplication;
 import com.example.zyfx_.myapplication.R;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
@@ -34,6 +36,9 @@ public class IndexFragment extends BaseAnnotationsFragment {
     @Bean
     ToastUtil toastUtil;
 
+    @Bean
+    MyCache myCache;
+
     AnnotationsMainActivity mainActivity;
 
     @Override
@@ -59,6 +64,9 @@ public class IndexFragment extends BaseAnnotationsFragment {
             public void onRequestSuccess(BaseEntity baseInfo) {
                 if (baseInfo.isSuccess()) {
                     toastUtil.showTextToast("退出成功");
+                    start(SignInActivity_.class);
+                    myCache.setLoginState(false);
+                    mActivity.finish();
                 } else {
                     toastUtil.showTextToast(baseInfo.getMsg());
                 }

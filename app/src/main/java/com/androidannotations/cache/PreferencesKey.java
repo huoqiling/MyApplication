@@ -10,5 +10,6 @@ public class PreferencesKey {
         String NAME = "USER_NAME";
         String TOKEN = "TOKEN";
         String HAS_LOGIN = "HAS_LOGIN";
+        String COOKIE = "COOKIE";
     }
 }

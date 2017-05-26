@@ -1,5 +1,8 @@
 package com.androidannotations.net;
 
+import android.text.TextUtils;
+import android.util.Log;
+
 import com.androidannotations.base.BaseRestManager;
 import com.androidannotations.entitys.InquiryRecordInfo;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
@@ -58,7 +61,6 @@ public class RestManager extends BaseRestManager {
 
     @Override
     protected void notifyResult(OnRestListener onRestListener, BaseEntity baseInfo) {
-        log(restClient.getHeader("JSESSIONID"));
         super.notifyResult(onRestListener, baseInfo);
     }
 
@@ -116,6 +118,14 @@ public class RestManager extends BaseRestManager {
             notifyRequestFail(onRestListener);
         } finally {
             notifyFinally(onRestListener);
+        }
+    }
+
+    public void setCookie(String cookie) {
+        if (!TextUtils.isEmpty(cookie)) {
+            Log.i("zhangx-restManage", "cookie--" + cookie);
+            restClient.setHeader("cookie", cookie);
+            bossClient.setHeader("cookie", cookie);
         }
     }
 }

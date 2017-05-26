@@ -3,16 +3,15 @@ package com.androidannotations.view.actvity;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.androidannotations.base.BaseAnnotationsActivity;
 import com.androidannotations.base.BaseRestManager;
+import com.androidannotations.cache.CookieCache;
 import com.androidannotations.net.RestManager;
-import com.androidannotations.utils.Constant;
-import com.androidannotations.utils.MyCache;
+import com.androidannotations.cache.MyCache;
 import com.androidannotations.utils.ToastUtil;
 import com.example.zyfx_.myapplication.R;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
@@ -57,6 +56,9 @@ public class SignInActivity extends BaseAnnotationsActivity {
 
     @Bean
     MyCache myCache;
+
+    @Bean
+    CookieCache cookieCache;
 
     @AfterViews
     void init() {
@@ -107,6 +109,7 @@ public class SignInActivity extends BaseAnnotationsActivity {
                 public void onRequestSuccess(BaseEntity baseInfo) {
                     UserInfo userResult = (UserInfo) baseInfo;
                     if (userResult.isSuccess()) {
+                        restManager.setCookie(cookieCache.getCookie());
                         myCache.saveToken(userResult.data.appLoginToken);
                         myCache.setLoginState(true);
                         myCache.saveUserName(userName);

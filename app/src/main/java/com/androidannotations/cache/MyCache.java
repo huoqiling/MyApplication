@@ -1,9 +1,7 @@
-package com.androidannotations.utils;
+package com.androidannotations.cache;
 
 import android.text.TextUtils;
 
-import com.androidannotations.cache.PreferencesKey;
-import com.androidannotations.cache.SecurityStorage;
 import com.example.zyfx_.myapplication.CustomApplication;
 
 import org.androidannotations.annotations.AfterInject;

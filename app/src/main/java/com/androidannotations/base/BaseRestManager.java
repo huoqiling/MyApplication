@@ -4,15 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.support.annotation.UiThread;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.androidannotations.net.HttpInterceptor;
 import com.androidannotations.net.MyClientHttpRequestInterceptor;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
-import com.example.zyfx_.myapplication.net.AppException;
-import com.example.zyfx_.myapplication.net.GsonTools;
-import com.google.gson.Gson;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -27,9 +22,6 @@ abstract public class BaseRestManager extends BaseEngine {
 
     @SystemService
     protected WifiManager wifiManager;
-
-    @Bean
-    protected HttpInterceptor testInterceptor;
 
     @Bean
     protected MyClientHttpRequestInterceptor interceptor;
@@ -82,14 +74,7 @@ abstract public class BaseRestManager extends BaseEngine {
 
     @UiThread
     public void dumpObject(Object object) {
-
-        try {
-            String jsonString = GsonTools.creatJsonString(object);
-            Log.v("zhangx-RestManager", "dumpObject:");
-            Log.v("zhangx-RestManager", jsonString);
-        } catch (AppException e) {
-            e.printStackTrace();
-        }
+        Log.v("zhangx-RestManager", "dumpObject:");
     }
 
     @UiThread

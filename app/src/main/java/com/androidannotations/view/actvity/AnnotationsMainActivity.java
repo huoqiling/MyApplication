@@ -6,16 +6,15 @@ import android.util.Log;
 import com.androidannotations.base.BaseAnnotationsActivity;
 import com.androidannotations.base.BaseAnnotationsFragment;
 import com.androidannotations.base.BaseRestManager;
+import com.androidannotations.cache.CookieCache;
 import com.androidannotations.net.RestManager;
-import com.androidannotations.utils.Constant;
-import com.androidannotations.utils.MyCache;
+import com.androidannotations.cache.MyCache;
 import com.androidannotations.utils.ToastUtil;
 import com.example.zyfx_.myapplication.R;
 import com.example.zyfx_.myapplication.bean.BaseEntity;
 import com.example.zyfx_.myapplication.bean.UserInfo;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
@@ -34,6 +33,9 @@ public class AnnotationsMainActivity extends BaseAnnotationsActivity {
 
     @Bean
     MyCache myCache;
+
+    @Bean
+    CookieCache cookieCache;
 
     private BaseAnnotationsFragment mainFragment;
 
@@ -56,7 +58,7 @@ public class AnnotationsMainActivity extends BaseAnnotationsActivity {
                 public void onRequestSuccess(BaseEntity baseInfo) {
                     UserInfo userResult = (UserInfo) baseInfo;
                     if (userResult.isSuccess()) {
-
+                        restManager.setCookie(cookieCache.getCookie());
                     } else {
                         myCache.setLoginState(false);
                         start(SignInActivity_.class);
